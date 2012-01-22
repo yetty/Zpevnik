@@ -1,0 +1,52 @@
+% nutné k nastavení češtiny
+\documentclass[czech,10pt,a5paper]{article}
+\usepackage[utf8]{inputenc}
+
+% nastavení rozměrů
+\usepackage[a5paper,landscape]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=1.5cm,lmargin=2cm,rmargin=2cm}
+
+% různé moduly
+\usepackage{amsmath}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{type1cm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[T1]{fontenc}
+\usepackage[math]{kurier}
+
+
+
+\usepackage{multicol}
+\newcommand{\ch}[1]
+{
+	\makebox[-6pt][c]{\raisebox{12pt}[24pt]{~~{ \footnotesize \textbf{#1}} }}
+}
+
+\setlength\parindent{0pt}
+
+\makeatletter
+\renewcommand{\tableofcontents}{\@starttoc{toc}}
+\renewcommand{\contentsline}[3]{\csname l@#1\endcsname{#2}{}}
+\makeatother
+
+\pagestyle{empty}
+
+% moje makra
+\usepackage{yetex}
+
+\begin{document}
+
+	\section*{Obsah}
+	\begin{multicols}{2}
+		\tableofcontents{}
+	\end{multicols}
+	\newpage
+
+	%CONTENT%
+
+\end{document}
+

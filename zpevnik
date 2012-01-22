@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo ">> Correcting by 'vlna'"
+vlna pisne/*.txt
+
+echo ">> Creating output directory"
+mkdir output
+
+echo ">> Make tex file"
+python "./zpevnik.py"
+
+echo ">> Opening output directory"
+cd output
+
+echo ">> Creating PDF"
+pdflatex -interaction=nonstopmode "./zpevnik.tex"
+pdflatex -interaction=nonstopmode "./zpevnik.tex"
+
+echo ">> Saving PDF"
+cp zpevnik.pdf ../zpevnik.pdf
+
+echo ">> Leaving output directory"
+cd ..
+
+echo ">> Removing temporary files"
+rm -vrf output
+
+echo ">> Bye..."
+
