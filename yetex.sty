@@ -1,0 +1,127 @@
+% sazba jednotek
+\newcommand{\unit}[2]{
+	\ensuremath{#1~\mathrm{#2}}
+}
+
+% ohm = Omega
+\newcommand{\ohm}{
+	\Omega
+}
+
+% vodorovná čára o délce šířky textu
+\newcommand{\HRule}{
+	\rule{\linewidth}{0.2mm}
+}
+
+% Sazba stupně °
+\newcommand{\degree}{^{\circ}}
+
+% hlavička vhodná pro olympiády a semináře.
+\newcommand{\TaskHeader}[1]
+{
+	\begin{center}
+		\HRule \\[0.5cm]
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushleft} \large
+				Juda \textsc{Kaleta}\\[1cm]
+			\end{flushleft}
+		\end{minipage}
+		\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+				Septima B
+			\end{flushright}
+		\end{minipage}
+
+		\LARGE #1.
+		\\[0.4cm] \HRule
+	\end{center}
+}
+
+% malá hlavička pouze se jménem
+\newcommand{\TinyHeader}
+{
+	Juda \textsc{Kaleta} \\[-2mm]
+	\HRule
+}
+
+% centrované nadpisy
+\newcommand{\cPart}[1]{\part[#1]{\centering #1}}
+% ... další časem podle potřeby? ...
+
+% vkládání obrázku, @todo vyžaduje něco načíst?
+\newcommand{\image}[2]{
+	\begin{figure}[htb]
+	  \centering
+	  \includegraphics[width=0.5\textwidth]{#2}
+	  \caption{#1}
+	\end{figure}
+}
+
+% obal pro soutěžní úlohu (GPS)
+\newcounter{CountOfTasks}
+\newenvironment{task}[2]{
+	\stepcounter{CountOfTasks} ~\\
+	\HRule \\
+	\rule{1ex}{1ex}
+	\hspace{\stretch{1}}
+	{
+		\bfseries \arabic{CountOfTasks}. #1 } (#2 bodů) \hspace{\stretch{1}
+	}
+	\rule{1ex}{1ex} \\[-0.2cm]
+	\HRule \\[0.2cm]
+}
+{
+	\\[0.5cm]
+}
+
+% příklad vstupu/výstupu
+\newcommand{\example}[2]{
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{flushleft} \large
+			\textit{Příklad vstupu:}\\
+			\texttt{#1}
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\textwidth}
+		\begin{flushleft} \large
+			\textit{Příklad výstupu:}\\
+			\texttt{#2}
+		\end{flushleft}
+	\end{minipage}
+}
+
+% kniha pro čtenářský deník
+\newenvironment{book}[2]{
+	~\\
+	\subsection{\textmd{ \Large \textsc{#1}: \textit{#2} }}\\
+
+
+}
+{
+	~\\
+}
+
+
+\newenvironment{osoba}[1]{
+    \begin{addmargin}[1cm]{0cm}
+    ~\\\textsc{#1}}
+{
+    \end{addmargin}
+    ~\\
+}
+
+\makeatletter
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
+
+\newcounter{mynote}% a new counter for use in margin notes
+
+\newcommand{\sidenote}[1]{% a simple margin note
+    \refstepcounter{mynote}% step counter
+    \mbox{\textsuperscript{\themynote}}% the number (superscript) in text
+    \marginnote{
+        \begin{spacing}{0.8}
+        \mbox{\textsuperscript{\themynote}}{
+        \footnotesize #1}\end{spacing}
+    }% the note
+}

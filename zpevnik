@@ -1,10 +1,11 @@
 #!/bin/bash
 
 echo ">> Correcting by 'vlna'"
-vlna pisne/*.txt
+/usr/texbin/vlna pisne/*.txt
 
 echo ">> Creating output directory"
 mkdir output
+cp yetex.sty output/
 
 echo ">> Make tex file"
 python "./zpevnik.py"
@@ -13,8 +14,8 @@ echo ">> Opening output directory"
 cd output
 
 echo ">> Creating PDF"
-pdflatex -interaction=nonstopmode "./zpevnik.tex"
-pdflatex -interaction=nonstopmode "./zpevnik.tex"
+/usr/texbin/pdflatex -interaction=nonstopmode "./zpevnik.tex"
+/usr/texbin/pdflatex -interaction=nonstopmode "./zpevnik.tex"
 
 echo ">> Saving PDF"
 cp zpevnik.pdf ../zpevnik.pdf
